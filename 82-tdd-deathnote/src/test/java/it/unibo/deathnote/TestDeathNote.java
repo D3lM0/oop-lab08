@@ -101,6 +101,8 @@ class TestDeathNote {
 
         assertEquals("", deathNote.getDeathDetails("Near"));
 
+        deathNote.writeDeathCause("respiratory arrest");
+
         boolean detailsWritten = deathNote.writeDetails("ran for too long");
         assertTrue(detailsWritten);
         assertEquals("ran for too long", deathNote.getDeathDetails("Near"));

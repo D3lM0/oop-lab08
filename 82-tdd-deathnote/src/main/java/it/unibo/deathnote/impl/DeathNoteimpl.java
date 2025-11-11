@@ -57,9 +57,13 @@ public class DeathNoteImpl implements DeathNote {
 
         final long now = System.currentTimeMillis();
         final DeathStatistics deathStatistics = humansToKill.get(lastNameWritten);
-        deathStatistics.cause = cause;
-        deathStatistics.timeCauseWritten = now;
-        return (now - this.lastNameTime) <= MAX_CAUSE_TIME_MILLIS;
+
+        if ((now - this.lastNameTime) <= MAX_CAUSE_TIME_MILLIS) {
+            deathStatistics.cause = cause;
+            deathStatistics.timeCauseWritten = now;
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -72,10 +76,14 @@ public class DeathNoteImpl implements DeathNote {
             throw new IllegalStateException("No name in this deathnote");
         }
 
-        final DeathStatistics deathStatistics = humansToKill.get(lastNameWritten);
         final long now = System.currentTimeMillis();
-        deathStatistics.details = details;
-        return (now - deathStatistics.timeCauseWritten) <= MAX_DEATH_DETAILS_MILLIS;
+        final DeathStatistics deathStatistics = humansToKill.get(lastNameWritten);
+        if ((now - deathStatistics.timeCauseWritten) <= MAX_DEATH_DETAILS_MILLIS) {
+            deathStatistics.details = details;
+            return true;
+        }
+
+        return false;
     }
 
     @Override
