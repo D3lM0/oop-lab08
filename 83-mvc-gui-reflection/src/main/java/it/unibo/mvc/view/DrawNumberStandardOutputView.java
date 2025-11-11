@@ -8,9 +8,13 @@ public class DrawNumberStandardOutputView implements DrawNumberView {
 
     private DrawNumberController controller;
 
+    public DrawNumberStandardOutputView() {
+
+    }
+
     @Override
     public void setController(final DrawNumberController observer) {
-        this.controller = observer;
+
     }
 
     @Override
