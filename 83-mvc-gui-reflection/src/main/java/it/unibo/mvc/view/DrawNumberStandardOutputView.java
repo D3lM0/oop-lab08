@@ -14,7 +14,7 @@ public class DrawNumberStandardOutputView implements DrawNumberView {
 
     @Override
     public void setController(final DrawNumberController observer) {
-
+        this.controller = observer;
     }
 
     @Override
