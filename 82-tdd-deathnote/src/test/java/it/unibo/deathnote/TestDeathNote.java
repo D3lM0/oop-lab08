@@ -52,7 +52,7 @@ class TestDeathNote {
 
     @Test
     void testWritingNameInDeathNote() {
-        String human1 = "Giovanni Buonincontro";
+        String human1 = "Matteo Del Moro";
         String human2 = "Light Yagami";
         String empty = "";
 
